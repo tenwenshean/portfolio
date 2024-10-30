@@ -1,0 +1,63 @@
+/* Theme */
+:root {
+  --bg-color: #282c34;
+  --text-color: #ffffff;
+}
+
+[data-theme='light'] {
+  --bg-color: #ffffff;
+  --text-color: #282c34;
+}
+
+
+/* font */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Oxanium', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+    display: flex; /* Added to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+
+}
+
+
+
+/* middle part */
+
+
+.title-box {
+    padding: 20px;
+    border: 2px solid var(--text-color); /* Adjust the color and width as needed */
+    background-color: var(--bg-color); /* Adjust the background color as needed */
+    width: fit-content; /* Adjust the width if needed */
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 15px;
+    color: var(--text-color);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.adjustModel {
+    width: 35vw;
+    height: 60vh;
+    margin-bottom: -30px;
+    margin-top: -150px;
+
+}
+
+about-me {
+    text-align: left;
+}
