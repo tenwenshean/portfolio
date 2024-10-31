@@ -1,27 +1,62 @@
 /* Header.css */
+:root {
+    /* Theme Variables - should match your App.css variables */
+    --bg-color-dark: #282c34;
+    --bg-color-light: #ffffff;
+    --text-color-dark: #ffffff;
+    --text-color-light: #282c34;
+
+    /* Header-specific variables */
+    --header-bg-transparent-dark: rgba(40, 44, 52, 0.7);
+    --header-bg-transparent-light: rgba(255, 255, 255, 0.7);
+    --header-hover: #61dafb;
+}
+
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: rgba(40, 44, 52, 0.7);
+    background-color: var(--header-bg-transparent-dark);
     color: var(--text-color);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.3s ease;
     z-index: 1000;
 }
 
+/* Light theme header styles */
+[data-theme="light"] .header {
+    background-color: var(--header-bg-transparent-light);
+    color: var(--text-color-light);
+}
+
+/* Dark theme header styles */
+[data-theme="dark"] .header {
+    background-color: var(--header-bg-transparent-dark);
+    color: var(--text-color-dark);
+}
+
+/* Scrolled states for both themes */
 .header.scrolled {
-    background-color: var(--bg-color); /* Change to solid color on scroll */
+    background-color: var(--bg-color);
+}
+
+[data-theme="light"] .header.scrolled {
+    background-color: var(--bg-color-light);
+}
+
+[data-theme="dark"] .header.scrolled {
+    background-color: var(--bg-color-dark);
 }
 
 .header h1 {
     margin: 0;
     margin-right: 30px;
+    font-size: 24px;
 }
 
 .header-right {
@@ -42,11 +77,32 @@
     transition: color 0.3s ease;
 }
 
-.header nav a:hover {
-    color: #61dafb;
+[data-theme="light"] .header nav a {
+    color: var(--text-color-light);
 }
 
-/* Add responsive design */
+[data-theme="dark"] .header nav a {
+    color: var(--text-color-dark);
+}
+
+.header nav a:hover {
+    color: var(--header-hover);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;

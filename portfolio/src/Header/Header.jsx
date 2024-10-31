@@ -1,39 +1,51 @@
-import React, { useEffect } from 'react';
+// Header.jsx
+import React, { useState, useEffect } from 'react';
 import './Header.css';
-import ThemeToggle from '../ThemeToggle';
-
 
 function Header() {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [theme, setTheme] = useState(() => {
+        // Get saved theme from localStorage or default to 'dark'
+        return localStorage.getItem('theme') || 'dark';
+    });
 
     useEffect(() => {
+        // Handle scroll
         const handleScroll = () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) { // Adjust this value as needed
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            setIsScrolled(window.scrollY > 0);
         };
 
         window.addEventListener('scroll', handleScroll);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        // Apply theme to document
+        document.documentElement.setAttribute('data-theme', theme);
+        // Save theme to localStorage
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+    };
 
     return (
-        <header className="header">
-            <h1>Ten Wen Shean</h1>
+        <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+            <h1>Your Logo</h1>
             <div className="header-right">
                 <nav>
-                    <a href="#about">About Me</a>
-                    <a href="#projects">Projects</a>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
                     <a href="#contact">Contact</a>
+                    <button
+                        onClick={toggleTheme}
+                        className="theme-toggle"
+                        aria-label="Toggle theme"
+                    >
+                        {theme === 'dark' ? '☀️' : '🌙'}
+                    </button>
                 </nav>
-                <ThemeToggle />
             </div>
         </header>
     );

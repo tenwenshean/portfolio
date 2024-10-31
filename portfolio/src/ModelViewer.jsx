@@ -21,7 +21,7 @@ const ModelViewer = () => {
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 10, 5]} intensity={1} />
                 <Suspense fallback={null}>
-                    <Model scale={0.5}/>
+                    <Model scale={0.3}/>
                     <OrbitControls />
                 </Suspense>
             </Canvas>
