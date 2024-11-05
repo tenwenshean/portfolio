@@ -1,3 +1,5 @@
+/* App.css */
+
 /* Theme */
 :root {
     --bg-color-dark: #282c34;
@@ -7,9 +9,9 @@
 
     --bg-color: var(--bg-color-dark);
     --text-color: var(--text-color-dark);
+    --title-box-bg-dark: #1f2125; /* Darker than bg-color-dark */
+    --title-box-bg-light: #e0e0e0; /* Slightly darker than bg-color-light */
 }
-
-
 
 [data-theme="dark"] {
     --bg-color: var(--bg-color-dark);
@@ -21,58 +23,100 @@
     --text-color: var(--text-color-light);
 }
 
+/* Model Viewer */
+.model-viewer {
+    width: 550px; /* Set width to match Craftz.dog */
+    height: 550px; /* Set height to match Craftz.dog */
+    margin-top: -100px; /* Add margin for spacing around the model viewer */
+    border: 1px solid #ccc;  /*Optional: Add a border for visibility */
+    border-radius: 15px; /* Optional: Add rounded corners */
+    overflow: hidden; /* Optional: Hide overflow if necessary */
+    position: relative; /* Ensure positioning context for absolute children */
+}
 
+/* Adjust the Canvas positioning */
+.model-viewer canvas {
+    position: absolute; /* Position the canvas absolutely within the viewer */
+    top: 20px; /* Move the canvas up */
+    left: 0;
+    width: 100%; /* Full width */
+    height: calc(100% + 20px); /* Full height, extending the height */
+}
 
+/* Responsive adjustments (optional) */
+@media (max-width: 600px) {
+    .model-viewer {
+        width: 80vw; /* Make it responsive */
+        height: 80vw; /* Maintain aspect ratio */
+    }
+}
 
-/* font */
-
+/* Base styles */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Oxanium', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-    display: flex; /* Added to center content */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-
-}
-
-
-
-/* middle part */
-
-
-.title-box {
-    padding: 10px;
-    border: 2px solid var(--text-color); /* Adjust the color and width as needed */
-    background-color: var(--bg-color); /* Adjust the background color as needed */
-    width: fit-content; /* Adjust the width if needed */
-    margin-bottom: 20px;
-    margin-top: -300px;
-    text-align: center;
-    border-radius: 15px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Oxanium', sans-serif;
+    background-color: var(--bg-color);
     color: var(--text-color);
-    transition: all 0.3s ease;
-}
-
-main {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center; /* Center text */
+}
+
+/* Title Box */
+.title-box {
+    background-color: var(--title-box-bg-dark); /* Default to dark mode background */
+    border-radius: 15px;
+    margin-top: -20px; /* Add margin to separate from the model viewer */
+    z-index: 1; /* Place above the model viewer */
+    transition: all 0.3s ease;
+    height: 80px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    padding: 0 20px;
 }
 
-.adjustModel {
-    width: 30vw;
-    height: 70vh;
-    margin-bottom: 350px;
-    margin-top: -150px;
+.title-box h1 {
+    font-size: 40px;
+    margin: 0;
+    padding: 10px 0;
+    z-index: 1;
 
 }
 
-about-me {
-    text-align: left;
+
+/* Use a light mode background color for the title box when in light theme */
+[data-theme="light"] .title-box {
+    background-color: var(--title-box-bg-light); /* Use the new lighter background color */
+}
+
+/* About Section */
+.about-section {
+    text-align: center; /* Center text */
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+/* Footer */
+.footer {
+    text-align: center; /* Center text */
+    margin-top: auto; /* Push footer to the bottom */
+    padding: 10px 0;
+}
+
+/* Links */
+.footer a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Underline on hover */
 }

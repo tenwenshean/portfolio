@@ -123,3 +123,11 @@
         gap: 15px;
     }
 }
+
+/* Model Viewer */
+.model-viewer {
+    width: 400px; /* Set width to match Craftz.dog */
+    height: 400px; /* Set height to match Craftz.dog */
+    margin: 0 auto; /* Center the model viewer */
+    /* Add any additional styling as needed */
+}

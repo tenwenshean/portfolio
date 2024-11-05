@@ -32,7 +32,7 @@ function Header() {
 
     return (
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-            <h1>Your Logo</h1>
+            <h1>Ten Wen Shean</h1>
             <div className="header-right">
                 <nav>
                     <a href="#home">Home</a>
